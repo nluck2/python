@@ -77,29 +77,29 @@ def ts():
     print("搞定")
     os.chdir(dir)
 def main():
-    # url = 'https://www.yhdmz.org/vp/22285-2-0.html'
-    # m3u8 = frist_m3u8(url)
-    # # (1)获得一层m3u8
-    # get_frist_m3u8(m3u8,'动漫')
-    # # #下载第一层m3u8文件
-    # with open('动漫',mode='r',encoding='utf-8') as f:
-    #     for line in f:
-    #         if line.startswith("#"):
-    #             continue
-    #         else:
-    #             line = line.strip()  #去掉空白或者换行符
-    #             #(2)准备第二层m3u8文件的下载路径
-    #             #https://vip.lz-cdn14.com/20230410/21607_94652f73/2000k/hls/mixed.m3u8  第二层
-    #             #2000k/hls/mixed.m3u8
-    #             #https://vip.lz-cdn14.com/20230410/21607_94652f73/index.m3u8?t=56161604 第一层
-    #             second_m3u8=m3u8.split("index.m3u8?t=56161604")[0] + line
-    #             #https://vip.lz-cdn14.com/20230410/21607_94652f73/2000k/hls/mixed.m3u8
-    #             get_second_m3u8_file(second_m3u8,'动漫sencond.txt')
-    # #(3)下载视频
-    # #https://vip.lz-cdn14.com/20230410/21607_94652f73/2000k/hls/b30d92a2d02000000.ts
-    # second_m3u8_up = second_m3u8.replace("mixed.m3u8","")
-    # #准备异步协程
-    # asyncio.run(aio_downloda(second_m3u8_up))
+    url = 'https://www.yhdmz.org/vp/22285-2-0.html'
+    m3u8 = frist_m3u8(url)
+    # (1)获得一层m3u8
+    get_frist_m3u8(m3u8,'动漫')
+    # #下载第一层m3u8文件
+    with open('动漫',mode='r',encoding='utf-8') as f:
+        for line in f:
+            if line.startswith("#"):
+                continue
+            else:
+                line = line.strip()  #去掉空白或者换行符
+                #(2)准备第二层m3u8文件的下载路径
+                #https://vip.lz-cdn14.com/20230410/21607_94652f73/2000k/hls/mixed.m3u8  第二层
+                #2000k/hls/mixed.m3u8
+                #https://vip.lz-cdn14.com/20230410/21607_94652f73/index.m3u8?t=56161604 第一层
+                second_m3u8=m3u8.split("index.m3u8?t=56161604")[0] + line
+                #https://vip.lz-cdn14.com/20230410/21607_94652f73/2000k/hls/mixed.m3u8
+                get_second_m3u8_file(second_m3u8,'动漫sencond.txt')
+    #(3)下载视频
+    #https://vip.lz-cdn14.com/20230410/21607_94652f73/2000k/hls/b30d92a2d02000000.ts
+    second_m3u8_up = second_m3u8.replace("mixed.m3u8","")
+    #准备异步协程
+    asyncio.run(aio_downloda(second_m3u8_up))
     ts()
 
 if __name__ == '__main__':
